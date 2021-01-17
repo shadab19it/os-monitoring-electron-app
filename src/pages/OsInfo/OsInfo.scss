@@ -1,0 +1,31 @@
+.os-stats-wrapper {
+  .stats-header {
+    padding: 18.5px 0;
+    font-size: 1.4rem;
+    color: lightgray;
+    border-bottom: 1px solid #384a77da;
+  }
+  .os-stats-cards {
+    padding-top: 100px;
+    .stats-card {
+      .stats-value,
+      .stats-label {
+        text-align: center;
+      }
+      .divider {
+        width: 150px;
+        height: 3px;
+        background-color: rgb(230, 228, 228);
+        margin: 5px auto;
+      }
+      .stats-label {
+        font-size: 1.2rem;
+      }
+
+      .stats-value {
+        font-size: 2.3rem;
+        color: #fff;
+      }
+    }
+  }
+}

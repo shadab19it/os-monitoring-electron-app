@@ -1,0 +1,92 @@
+@import "../variables.scss";
+
+.main-wrapper {
+  background-color: #152a42;
+  height: 100vh;
+  max-height: 100vh;
+  display: flex;
+  overflow-y: hidden;
+  .side-nav-wrapper {
+    // width: 180px;
+    // max-width: 180px;
+    background-color: rgb(68, 38, 95);
+    height: 100%;
+    .side-nav {
+      height: 100%;
+      box-shadow: 0 2px 20px 3px rgba(0, 0, 0, 0.3);
+      .brand-name {
+        margin-bottom: 20px;
+        background-color: $lt-active-side-nav;
+        padding: 5px 0;
+        font-size: 1rem;
+        color: #fff;
+        text-align: center;
+        border-bottom: 1px solid #384a77da;
+        .brand-icon {
+          color: $lt-btn-primary;
+          margin-right: 10px;
+          font-size: 1.5rem;
+        }
+      }
+      .update-popup {
+        padding: 8px 0;
+        margin: 10px;
+        color: rgb(218, 211, 211);
+        border-radius: 4px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        border: 1px dashed lightgray;
+        .desc {
+          text-align: center;
+          margin-bottom: 8px;
+          line-height: 1.2;
+        }
+        .btn-install {
+          margin-right: 10px;
+          border-color: green;
+          &:hover {
+            background-color: green;
+          }
+        }
+        .btn-later {
+          border-color: orange;
+          &:hover {
+            background-color: orange;
+          }
+        }
+
+        .btn-later,
+        .btn-install {
+          color: white;
+          background-color: transparent;
+          padding: 2px 10px;
+          height: 25px;
+          font-size: 12px;
+        }
+      }
+
+      .ant-menu {
+        .ant-menu-item {
+          &:first-child {
+            margin-top: 0;
+          }
+          background-color: transparent;
+          border-left: 3px solid transparent;
+        }
+        .ant-menu-item-selected {
+          border-right: 3px solid $lt-btn-primary;
+          background-color: #2b385d;
+          margin-left: 0px;
+        }
+      }
+    }
+  }
+  .main-content-warpper {
+    overflow-y: scroll;
+    padding: 0 10px;
+    width: 100%;
+    color: $lt-font-dull-color;
+  }
+}
