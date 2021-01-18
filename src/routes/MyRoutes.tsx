@@ -11,13 +11,7 @@ import Main from "../pages/Main";
 import OsInfo from "../pages/OsInfo/OsInfo";
 import { actionTypes } from "../appContext/reducer";
 import { AppContext } from "../appContext/appContext";
-
-export const setLocalStorage = (name: string, data: any) => localStorage.setItem(name, JSON.stringify(data));
-export const getLocalStorage = (name: string) => JSON.parse(localStorage.getItem(name));
-
-export const sendMsgtoMain = (msgName: string, value: any) => {
-  ipcRenderer.send(msgName, value);
-};
+import { getLocalStorage, setLocalStorage, sendMsgtoMain } from "../Utils/Utils";
 
 const MyRoutes: FC = () => {
   const [state, setState] = useState<AppContext>({
@@ -46,7 +40,7 @@ const MyRoutes: FC = () => {
     } else {
       sendMsgtoMain("auto-launch", state.isAutoLaunch);
     }
-    return () => ipcRenderer.removeAllListeners("auto-launch");
+    return () => ipcRenderer.removeAllListeners("auto-l..ch");
   }, [state.isAutoLaunch]);
 
   const autoLaunch = (isOn: boolean) => {

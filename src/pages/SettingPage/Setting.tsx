@@ -1,9 +1,9 @@
 import React, { FC, useState, useEffect, useContext } from "react";
 import { Switch } from "antd";
-import { ipcRenderer } from "electron";
+import { app, ipcRenderer } from "electron";
 import "./Setting.scss";
 import { UserContext } from "../../appContext/appContext";
-import { sendMsgtoMain } from "../../routes/MyRoutes";
+import { sendMsgtoMain } from "../../Utils/Utils";
 
 const Setting: FC<{ autoLaunch: (autoLaunch: boolean) => void }> = ({ autoLaunch }) => {
   const appState = useContext(UserContext);
@@ -21,7 +21,7 @@ const Setting: FC<{ autoLaunch: (autoLaunch: boolean) => void }> = ({ autoLaunch
       <div className='header-title'>App Settings </div>
       <section className='sec-one'>
         <div className='row-one'>
-          <div className='label'>Auto Launch on restart </div>
+          <div className='label'>Auto Launch on restart : {appState.isAutoLaunch ? "ON" : "OFF"} </div>
           <div className='action-btn'>
             <Switch defaultChecked={appState.isAutoLaunch} onChange={onChange} />
           </div>
