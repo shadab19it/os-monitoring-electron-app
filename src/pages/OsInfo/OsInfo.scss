@@ -1,11 +1,13 @@
 @import "../../variables.scss";
 
 .os-stats-wrapper {
-  .stats-header {
-    padding: 18.5px 0;
+  padding: 20px;
+  .header-title {
+    color: $lt-card-bg;
     font-size: 1.4rem;
-    color: lightgray;
-    border-bottom: 1px solid #384a77da;
+    padding-bottom: 16px;
+    border-bottom: 1px solid $lt-btn-primary-border;
+    margin-bottom: 10px;
   }
   .os-stats-cards {
     padding-top: 100px;

@@ -51,9 +51,7 @@ const OsInfo: FC = () => {
   }, []);
   return (
     <div className='os-stats-wrapper'>
-      <div className='stats-header' onClick={() => history.push("/about")}>
-        Os Stats Info
-      </div>
+      <div className='header-title'> Os Stats </div>
       <div className='os-stats-cards'>
         <Row gutter={16} align='middle' justify='center'>
           <Col span={8}>

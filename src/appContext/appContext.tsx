@@ -1,7 +1,7 @@
 import React, { FC, createContext, useContext, useReducer } from "react";
 import { IAction, IinitialState } from "./reducer";
 
-export type MemberType = "gold" | "enterprices" | "basic";
+export type MemberType = "gold" | "enterprises" | "basic";
 export interface Member {
   name: string;
   email: string;

@@ -1,0 +1,50 @@
+@import "../../variables.scss";
+.upgrade-plan-wrapper {
+  padding: 20px;
+  .header-title {
+    color: $lt-card-bg;
+    font-size: 1.4rem;
+    padding-bottom: 16px;
+    border-bottom: 1px solid $lt-btn-primary-border;
+    margin-bottom: 10px;
+  }
+  .plan-cards {
+    .plan-card {
+      &:first-child {
+        margin-top: 15px;
+      }
+      &:not(:last-child) {
+        margin-bottom: 20px;
+      }
+      .ant-card {
+        background-color: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(20);
+        border: none;
+        border-radius: 4px;
+      }
+      .ant-card-head {
+        min-height: 30px;
+        border-bottom: 0.6px solid rgba(190, 190, 190, 0.726);
+        .ant-card-head-title,
+        .ant-card-extra {
+          padding: 8px 0;
+        }
+        .plan-label {
+          color: $lt-warn;
+          font-size: 1.8rem;
+          font-weight: 400;
+          .plan-price {
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-left: 10px;
+            color: #eee;
+          }
+        }
+      }
+      .ant-card-body {
+        padding: 10px 24px;
+        color: #eee;
+      }
+    }
+  }
+}

@@ -29,6 +29,7 @@ const createWindow = () => {
   mainWindow = new BrowserWindow({
     height: 600,
     width: 800,
+    icon: "./src/monitor.png",
     webPreferences: {
       nodeIntegration: true,
     },
@@ -46,7 +47,7 @@ const createWindow = () => {
 function showNotification() {
   const notification = {
     icon: "./src/tray.png",
-    title: "Monitoring App open now",
+    title: "Monitoring App open ",
     body: "You can watch you os info Now .",
   };
   new Notification(notification).show();
