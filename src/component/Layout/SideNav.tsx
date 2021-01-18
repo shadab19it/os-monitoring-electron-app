@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { UserOutlined, LaptopOutlined, NotificationOutlined, DashboardOutlined } from "@ant-design/icons";
+import { UserOutlined, LaptopOutlined, NotificationOutlined, DashboardOutlined, SettingOutlined } from "@ant-design/icons";
 import Sider from "antd/lib/layout/Sider";
 import SubMenu from "antd/lib/menu/SubMenu";
 import { Button, Menu } from "antd";
@@ -30,14 +30,14 @@ const SideNav: FC<{ selectedKey: string }> = ({ selectedKey }) => {
         <Menu.Item key='1' icon={<LaptopOutlined />}>
           <Link to='/'>Os Info</Link>
         </Menu.Item>
-        <Menu.Item key='2' icon={<UserOutlined />}>
-          <Link to='/upgrade/plane'>Upgrade Plane</Link>
-        </Menu.Item>
-        <Menu.Item key='3' icon={<NotificationOutlined />}>
+        <Menu.Item key='3' icon={<UserOutlined />}>
           <Link to='/user/profile'>User Profile</Link>
         </Menu.Item>
-        <Menu.Item key='4' icon={<UserOutlined />}>
-          <Link to='/about'>About</Link>
+        <Menu.Item key='2' icon={<NotificationOutlined />}>
+          <Link to='/upgrade/plane'>Upgrade Plane</Link>
+        </Menu.Item>
+        <Menu.Item key='4' icon={<SettingOutlined />}>
+          <Link to='/setting'>App Setting</Link>
         </Menu.Item>
       </Menu>
     </Sider>

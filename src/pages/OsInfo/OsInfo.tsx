@@ -25,10 +25,10 @@ export const bytesToSize = (bytes: number) => {
 const OsInfo: FC = () => {
   const history = useHistory();
   const [state, setState] = React.useState<IState>({
-    cpuUsage: "55",
-    totalMem: "55",
-    memUsage: "35",
-    freeMem: "75",
+    cpuUsage: "",
+    totalMem: "",
+    memUsage: "",
+    freeMem: "",
   });
 
   const getCpuUsage = (onSuccess: (v: string) => void) => {
@@ -65,14 +65,14 @@ const OsInfo: FC = () => {
           </Col>
           <Col span={8}>
             <div className='stats-card'>
-              <div className='stats-value'>{state.cpuUsage}</div>
+              <div className='stats-value'>{state.cpuUsage ? state.cpuUsage : <h6>Loading...</h6>}</div>
               <div className='divider'></div>
               <div className='stats-label'>CPU Usages</div>
             </div>
           </Col>
           <Col span={8}>
             <div className='stats-card'>
-              <div className='stats-value'>{state.freeMem}</div>
+              <div className='stats-value'>{state.freeMem ? state.freeMem : <h6>Loading...</h6>}</div>
               <div className='divider'></div>
               <div className='stats-label'>MEM Left</div>
             </div>

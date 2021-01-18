@@ -1,42 +1,68 @@
-import React, { FC, useEffect } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { BrowserRouter as Router, HashRouter, Switch, Route } from "react-router-dom";
 import { ipcRenderer } from "electron";
-import { useAppContext } from "../appContext/appContext";
+import { UserContext } from "../appContext/appContext";
 import { useHistory } from "react-router-dom";
 
 // import Pages
-import About from "../pages/About/About";
+import Setting from "../pages/SettingPage/Setting";
 import UserProfile from "../pages/UserProfile/UserProfile";
 import Main from "../pages/Main";
 import OsInfo from "../pages/OsInfo/OsInfo";
 import { actionTypes } from "../appContext/reducer";
+import { AppContext } from "../appContext/appContext";
+
+export const setLocalStorage = (name: string, data: any) => localStorage.setItem(name, JSON.stringify(data));
+export const getLocalStorage = (name: string) => JSON.parse(localStorage.getItem(name));
+
+export const sendMsgtoMain = (msgName: string, value: any) => {
+  ipcRenderer.send(msgName, value);
+};
 
 const MyRoutes: FC = () => {
-  const history = useHistory();
-  const [dispatch, state] = useAppContext();
+  const [state, setState] = useState<AppContext>({
+    currentUser: {
+      name: "shadab",
+      email: "shadab19it@gamil.com",
+      memberType: "basic",
+    },
+    appVersion: "",
+    isAutoLaunch: true,
+  });
+
   useEffect(() => {
     console.log("app-loaded");
-    ipcRenderer.send("app_version", "give app version");
+    ipcRenderer.on("app_version", (e, v) => {
+      setState((prv) => ({ ...prv, appVersion: v }));
+    });
+    return () => ipcRenderer.removeAllListeners("app_version");
   }, []);
 
-  console.log("state value", state.appVersion);
-  ipcRenderer.on("app_version", (e, v) => {
-    console.log("msg ", v);
-    dispatch({ type: actionTypes.SET_APP_VerSion, payload: v });
-  });
+  useEffect(() => {
+    if (localStorage.getItem("isAutoLaunch")) {
+      const isOn = getLocalStorage("isAutoLaunch");
+      sendMsgtoMain("auto-launch", isOn);
+      setState((prv) => ({ ...prv, isAutoLaunch: isOn }));
+    } else {
+      sendMsgtoMain("auto-launch", state.isAutoLaunch);
+    }
+    return () => ipcRenderer.removeAllListeners("auto-launch");
+  }, [state.isAutoLaunch]);
 
-  ipcRenderer.on("open:page", (e, v) => {
-    history.push("/about");
-    console.log("url ", `${v}`);
-  });
+  const autoLaunch = (isOn: boolean) => {
+    setLocalStorage("isAutoLaunch", isOn);
+    setState((prv) => ({ ...prv, isAutoLaunch: isOn }));
+  };
   return (
     <HashRouter>
-      <Switch>
-        <Route exact path='/' render={() => <Main selectedKey={"1"} page={<OsInfo />} />} />
-        <Route exact path='/upgrade/plane' render={() => <Main selectedKey={"2"} page={<div>Upgrage Plane</div>} />} />
-        <Route exact path='/about' render={() => <Main selectedKey='4' page={<About />} />} />
-        <Route exact path='/user/profile' render={() => <Main selectedKey='3' page={<UserProfile />} />} />
-      </Switch>
+      <UserContext.Provider value={{ currentUser: state.currentUser, isAutoLaunch: state.isAutoLaunch, appVersion: state.appVersion }}>
+        <Switch>
+          <Route exact path='/' render={() => <Main selectedKey={"1"} page={<OsInfo />} />} />
+          <Route exact path='/upgrade/plane' render={() => <Main selectedKey={"2"} page={<div>Upgrage Plane</div>} />} />
+          <Route exact path='/setting' render={() => <Main selectedKey='4' page={<Setting autoLaunch={autoLaunch} />} />} />
+          <Route exact path='/user/profile' render={() => <Main selectedKey='3' page={<UserProfile />} />} />
+        </Switch>
+      </UserContext.Provider>
     </HashRouter>
   );
 };

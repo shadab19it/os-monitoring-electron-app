@@ -1,0 +1,28 @@
+@import "../../variables.scss";
+
+.setting-page-wrapper {
+  padding: 20px;
+  .header-title {
+    color: $lt-card-bg;
+    font-size: 1.5rem;
+    padding-bottom: 16px;
+    border-bottom: 1px solid $lt-btn-primary-border;
+    margin-bottom: 10px;
+  }
+
+  .sec-one {
+    padding: 10px 0;
+    .row-one {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .label {
+        font-size: 1.1rem;
+        color: #f0f0f0;
+      }
+    }
+    .desc {
+      margin-top: 5px;
+    }
+  }
+}

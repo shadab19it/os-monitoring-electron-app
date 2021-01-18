@@ -1,7 +1,6 @@
 import electron, { app, BrowserWindow, Menu, Tray, ipcMain, Notification } from "electron";
 import AutoLaunch from "auto-launch";
 import path from "path";
-import { ManOutlined } from "@ant-design/icons";
 declare const MAIN_WINDOW_WEBPACK_ENTRY: any;
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
@@ -14,7 +13,16 @@ let mainWindow: Electron.BrowserWindow | null;
 let tray: Electron.Tray | null;
 let MenuTemplate: Electron.Menu | null;
 let autoLaunch: AutoLaunch | null;
-let isAutoLaunch: boolean = true;
+let isAutoLaunch: boolean;
+
+const sendMsgToRenderer = (msgName: string, value: any) => {
+  mainWindow.webContents.send(msgName, value);
+};
+
+autoLaunch = new AutoLaunch({
+  name: "os-monitoring",
+  path: app.getPath("exe"),
+});
 
 const createWindow = () => {
   // Create the browser window.
@@ -25,22 +33,9 @@ const createWindow = () => {
       nodeIntegration: true,
     },
   });
+  // app.setAppLogsPath("./monitor.png");
   // and load the index.html of the app.
   mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
-  mainWindow.webContents.send("auto-launch", isAutoLaunch);
-
-  autoLaunch = new AutoLaunch({
-    name: "Monitor-App",
-    path: app.getPath("exe"),
-  });
-  if (isAutoLaunch) {
-    autoLaunch.enable();
-  }
-
-  ipcMain.on("auto-launch", (e, v) => {
-    isAutoLaunch = v;
-    isAutoLaunch ? autoLaunch.enable() : autoLaunch.disable();
-  });
 
   mainWindow.on("close", () => {
     mainWindow = null;
@@ -68,7 +63,12 @@ app
   .then(() => {
     showNotification();
     ipcMain.on("app_version", () => {
-      mainWindow.webContents.send("app_version", app.getVersion());
+      sendMsgToRenderer("app_version", app.getVersion());
+    });
+
+    ipcMain.on("auto-launch", (e, v) => {
+      isAutoLaunch = v;
+      isAutoLaunch ? autoLaunch.enable() : autoLaunch.disable();
     });
 
     tray = new Tray("./src/tray.png");
@@ -81,13 +81,8 @@ app
         },
       },
       {
-        label: "Auto-launch",
-        checked: isAutoLaunch,
+        label: "open",
         type: "checkbox",
-        click: (e) => {
-          isAutoLaunch = e.checked;
-          isAutoLaunch ? autoLaunch.enable() : autoLaunch.disable();
-        },
       },
       {
         label: "Setting",
@@ -106,8 +101,6 @@ app
     tray.on("click", () => {
       mainWindow?.isVisible() ? mainWindow.hide() : mainWindow?.show();
     });
-
-    console.log("global main ", isAutoLaunch);
   })
   .catch((err) => console.log(err));
 

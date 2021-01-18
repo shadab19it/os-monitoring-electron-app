@@ -1,6 +1,6 @@
 {
-  "name": "monitor-one",
-  "productName": "monitor-one",
+  "name": "os-monitoring",
+  "productName": "Os-Monitoring",
   "version": "1.0.0",
   "description": "A simple electron app for testing os-info",
   "main": ".webpack/main",
@@ -24,7 +24,8 @@
         {
           "name": "@electron-forge/maker-squirrel",
           "config": {
-            "name": "monitor_one"
+            "name": "monitor_one",
+            "author": "Shadab"
           }
         },
         {
@@ -91,6 +92,7 @@
     "@types/react-router-dom": "^5.1.7",
     "antd": "^4.10.2",
     "auto-launch": "^5.0.5",
+    "copy-webpack-plugin": "^7.0.0",
     "electron-squirrel-startup": "^1.0.0",
     "os-utils": "^0.0.14",
     "react": "^17.0.1",
