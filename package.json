@@ -49,8 +49,7 @@
       "windowsStoreConfig": {
         "packageName": "",
         "name": "Os-Monitoring"
-      }
-    },
+      },
       "makers": [
         {
           "name": "@electron-forge/maker-squirrel",

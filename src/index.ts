@@ -14,7 +14,7 @@ if (require("electron-squirrel-startup")) {
 
 updateElectron({
   repo: "https://github.com/shadab19it/Os-Monitoring", // GitHub repo to check
-  updateInterval: "2 minutes",
+  updateInterval: "6 minutes",
   logger: log,
   notifyUser: true,
 });

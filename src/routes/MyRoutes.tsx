@@ -27,8 +27,10 @@ const MyRoutes: FC = () => {
 
   useEffect(() => {
     console.log("app-loaded");
+    sendMsgtoMain("app_version", "");
     ipcRenderer.on("app_version", (e, v) => {
       setState((prv) => ({ ...prv, appVersion: v }));
+      console.log("appV ", v);
     });
     return () => ipcRenderer.removeAllListeners("app_version");
   }, []);
@@ -43,6 +45,8 @@ const MyRoutes: FC = () => {
     }
     return () => ipcRenderer.removeAllListeners("auto-launch");
   }, [state.isAutoLaunch]);
+
+  console.log("apState ", state.appVersion);
 
   const autoLaunch = (isOn: boolean) => {
     setLocalStorage("isAutoLaunch", isOn);

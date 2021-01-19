@@ -1,11 +1,13 @@
-import React, { FC } from "react";
+import React, { FC, useContext } from "react";
 import { UserOutlined, LaptopOutlined, NotificationOutlined, DashboardOutlined, SettingOutlined } from "@ant-design/icons";
 import Sider from "antd/lib/layout/Sider";
 import SubMenu from "antd/lib/menu/SubMenu";
 import { Button, Menu } from "antd";
 import { Link } from "react-router-dom";
+import { UserContext } from "../../appContext/appContext";
 
 const SideNav: FC<{ selectedKey: string }> = ({ selectedKey }) => {
+  const appState = useContext(UserContext);
   const [isNavOpen, setNavOpen] = React.useState(false);
   return (
     <Sider collapsed={isNavOpen} onCollapse={() => setNavOpen(!isNavOpen)} width={180} className='side-nav'>
@@ -38,6 +40,9 @@ const SideNav: FC<{ selectedKey: string }> = ({ selectedKey }) => {
         </Menu.Item>
         <Menu.Item key='4' icon={<SettingOutlined />}>
           <Link to='/setting'>App Setting</Link>
+        </Menu.Item>
+        <Menu.Item key='5' icon={<SettingOutlined />}>
+          V : {appState.appVersion}
         </Menu.Item>
       </Menu>
     </Sider>
