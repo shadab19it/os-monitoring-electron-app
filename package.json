@@ -1,14 +1,14 @@
 {
   "name": "os-monitoring",
   "productName": "Os-Monitoring",
-  "version": "1.0.0",
+  "version": "2.2.2",
   "description": "A simple electron app for testing os-info",
   "main": ".webpack/main",
   "scripts": {
     "start": "electron-forge start",
     "package": "electron-forge package",
     "make": "electron-forge make",
-    "publish": "electron-forge publish",
+    "pack": "electron-forge publish",
     "lint": "eslint --ext .ts ."
   },
   "keywords": [],
