@@ -19,7 +19,38 @@
   "license": "MIT",
   "config": {
     "forge": {
-      "packagerConfig": {},
+      "electronPackagerConfig": {
+        "packageManager": "yarn",
+        "icon": "src/monitor.png",
+        "appCopyright": "gigahex",
+        "ignore": [
+          ".+.test.js",
+          ".*.env",
+          ".eslintrc",
+          ".gitignore",
+          "README.md",
+          "yarn.lock",
+          ".jshintrc",
+          ".babelrc"
+        ]
+      },
+      "electronWinstallerConfig": {
+        "name": "Os-Monitoring",
+        "signWithParams": "/tr http://timestamp.digicert.com /td sha256 /fd sha256 /sha1 99c6ca99d9bb5222688a6de194ddd85b1205",
+        "setupIcon": "src/monitor.png",
+        "loadingGif": "src/loading.png"
+      },
+      "electronInstallerDebian": {},
+      "electronInstallerRedhat": {},
+      "github_repository": {
+        "owner": "https://github.com/shadab19it/Os-Monitoring",
+        "name": "Os-Monitoring"
+      },
+      "windowsStoreConfig": {
+        "packageName": "",
+        "name": "Os-Monitoring"
+      }
+    },
       "makers": [
         {
           "name": "@electron-forge/maker-squirrel",
@@ -88,11 +119,14 @@
   "dependencies": {
     "@ant-design/icons": "^4.3.0",
     "@types/auto-launch": "^5.0.1",
+    "@types/dotenv": "^8.2.0",
     "@types/os-utils": "^0.0.1",
     "@types/react-router-dom": "^5.1.7",
     "antd": "^4.10.2",
     "auto-launch": "^5.0.5",
     "copy-webpack-plugin": "^7.0.0",
+    "dotenv": "^8.2.0",
+    "electron-log": "^4.3.1",
     "electron-squirrel-startup": "^1.0.0",
     "os-utils": "^0.0.14",
     "react": "^17.0.1",

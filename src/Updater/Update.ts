@@ -1,19 +1,19 @@
-import isSquirrelStartup from "electron-squirrel-startup";
-import updateElectron from "update-electron-app";
-import log from "electron-log";
+// import isSquirrelStartup from "electron-squirrel-startup";
+// import updateElectron from "update-electron-app";
+// import log from "electron-log";
 
-export default class Updater {
-  constructor() {}
+// export default class Updater {
+//   constructor() {}
 
-  setupAll() {
-    if (isSquirrelStartup) app.quit();
+//   setupAll() {
+//     if (isSquirrelStartup) app.quit();
 
-    // Setup update checks
-    updateElectron({
-      repo: "m4tt1mus/appname", // GitHub repo to check
-      updateInterval: "10 minutes",
-      logger: log,
-      notifyUser: true,
-    });
-  }
-}
+//     // Setup update checks
+//     updateElectron({
+//       repo: "m4tt1mus/appname", // GitHub repo to check
+//       updateInterval: "10 minutes",
+//       logger: log,
+//       notifyUser: true,
+//     });
+//   }
+// }
