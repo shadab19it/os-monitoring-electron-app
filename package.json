@@ -1,7 +1,7 @@
 {
   "name": "os-monitoring",
   "productName": "Os-Monitoring",
-  "version": "2.2.2",
+  "version": "2.4.2",
   "description": "A simple electron app for testing os-info",
   "main": ".webpack/main",
   "scripts": {
