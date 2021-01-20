@@ -41,9 +41,7 @@ const SideNav: FC<{ selectedKey: string }> = ({ selectedKey }) => {
         <Menu.Item key='4' icon={<SettingOutlined />}>
           <Link to='/setting'>App Setting</Link>
         </Menu.Item>
-        <Menu.Item key='5' icon={<SettingOutlined />}>
-          V : {appState.appVersion}
-        </Menu.Item>
+        <Menu.Item key='5'>V : {appState.appVersion}</Menu.Item>
       </Menu>
     </Sider>
   );
