@@ -11,7 +11,7 @@ import Main from "../pages/Main";
 import OsInfo from "../pages/OsInfo/OsInfo";
 import { actionTypes } from "../appContext/reducer";
 import { AppContext } from "../appContext/appContext";
-import { getLocalStorage, setLocalStorage, sendMsgtoMain } from "../Utils/Utils";
+import { getLocalStorage, setLocalStorage, sendMsgtoMain } from "../../Utils/Utils";
 import UpgradePlan from "../pages/UpgradePlan/UpgradePlan";
 
 const MyRoutes: FC = () => {
@@ -30,7 +30,6 @@ const MyRoutes: FC = () => {
     sendMsgtoMain("app_version", "");
     ipcRenderer.on("app_version", (e, v) => {
       setState((prv) => ({ ...prv, appVersion: v }));
-      console.log("appV ", v);
     });
     return () => ipcRenderer.removeAllListeners("app_version");
   }, []);
@@ -45,8 +44,6 @@ const MyRoutes: FC = () => {
     }
     return () => ipcRenderer.removeAllListeners("auto-launch");
   }, [state.isAutoLaunch]);
-
-  console.log("apState ", state.appVersion);
 
   const autoLaunch = (isOn: boolean) => {
     setLocalStorage("isAutoLaunch", isOn);

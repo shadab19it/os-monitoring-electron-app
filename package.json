@@ -25,37 +25,6 @@
     },
     "prerelease": true,
     "forge": {
-      "electronPackagerConfig": {
-        "packageManager": "yarn",
-        "icon": "src/monitor.png",
-        "appCopyright": "gigahex",
-        "ignore": [
-          ".+.test.js",
-          ".*.env",
-          ".eslintrc",
-          ".gitignore",
-          "README.md",
-          "yarn.lock",
-          ".jshintrc",
-          ".babelrc"
-        ]
-      },
-      "electronWinstallerConfig": {
-        "name": "Os-Monitoring",
-        "signWithParams": "/tr http://timestamp.digicert.com /td sha256 /fd sha256 /sha1 99c6ca99d9bb5222688a6de194ddd85b1205",
-        "setupIcon": "src/monitor.png",
-        "loadingGif": "src/loading.png"
-      },
-      "electronInstallerDebian": {},
-      "electronInstallerRedhat": {},
-      "github_repository": {
-        "owner": "https://github.com/shadab19it/Os-Monitoring",
-        "name": "Os-Monitoring"
-      },
-      "windowsStoreConfig": {
-        "packageName": "",
-        "name": "Os-Monitoring"
-      },
       "makers": [
         {
           "name": "@electron-forge/maker-squirrel",
@@ -89,7 +58,7 @@
               "entryPoints": [
                 {
                   "html": "./src/index.html",
-                  "js": "./src/renderer.ts",
+                  "js": "./src/renderer.tsx",
                   "name": "main_window"
                 }
               ]
@@ -119,7 +88,10 @@
     "electron": "11.2.0",
     "eslint": "^6.8.0",
     "eslint-plugin-import": "^2.20.0",
+    "file-loader": "^6.2.0",
     "fork-ts-checker-webpack-plugin": "^3.1.1",
+    "less": "^4.1.0",
+    "less-loader": "^7.3.0",
     "node-loader": "^0.6.0",
     "style-loader": "^2.0.0",
     "ts-loader": "^6.2.1",

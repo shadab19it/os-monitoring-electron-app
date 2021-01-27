@@ -3,7 +3,7 @@ import { Switch } from "antd";
 import { app, ipcRenderer } from "electron";
 import "./Setting.scss";
 import { UserContext } from "../../appContext/appContext";
-import { sendMsgtoMain } from "../../Utils/Utils";
+import { sendMsgtoMain } from "../../../Utils/Utils";
 
 const Setting: FC<{ autoLaunch: (autoLaunch: boolean) => void }> = ({ autoLaunch }) => {
   const appState = useContext(UserContext);

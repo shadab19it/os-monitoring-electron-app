@@ -12,12 +12,12 @@ if (require("electron-squirrel-startup")) {
   app.quit();
 }
 
-updateElectron({
-  repo: "https://github.com/shadab19it/Os-Monitoring", // GitHub repo to check
-  updateInterval: "6 minutes",
-  logger: log,
-  notifyUser: true,
-});
+// updateElectron({
+//   repo: "https://github.com/shadab19it/Os-Monitoring", // GitHub repo to check
+//   updateInterval: "6 minutes",
+//   logger: log,
+//   notifyUser: true,
+// });
 
 // assigne some global varialbe
 let mainWindow: Electron.BrowserWindow | null;
@@ -40,6 +40,7 @@ const createWindow = () => {
   mainWindow = new BrowserWindow({
     height: 600,
     width: 800,
+    icon: "../assets/monitor.png",
     webPreferences: {
       nodeIntegration: true,
     },
@@ -55,7 +56,7 @@ const createWindow = () => {
 
 function showNotification() {
   const notification = {
-    icon: "./src/tray.png",
+    icon: "../assets/tray.png",
     title: "Monitoring App open ",
     body: "You can watch you os info Now .",
   };
@@ -81,7 +82,7 @@ app
       isAutoLaunch ? autoLaunch.enable() : autoLaunch.disable();
     });
 
-    tray = new Tray("./src/tray.png");
+    tray = new Tray("../assets/tray.png");
     const cxtMenu = Menu.buildFromTemplate([
       {
         label: "Quit",
