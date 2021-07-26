@@ -1,11 +1,11 @@
 module.exports = [
   // Add support for native node modules
   {
-    test: /\.(svg|png|jpg|gif)$/,
+    test: /\.(svg|png|jpg|gif)$/i,
     loader: "file-loader",
     options: {
       name: "[name].[hash].[ext]",
-      outputPath: "assets",
+      outputPath: "assest",
     },
   },
   {
@@ -23,7 +23,7 @@ module.exports = [
     },
   },
   {
-    test: /\.tsx?$/,
+    test: /\.tsx?$/i,
     exclude: /(node_modules|\.webpack)/,
     use: {
       loader: "ts-loader",

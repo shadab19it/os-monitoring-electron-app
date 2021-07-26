@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "typeRoots": ["./src/App/types", "node_modules/@types"],
     "allowJs": true,
     "module": "commonjs",
     "skipLibCheck": true,
@@ -15,5 +16,6 @@
       "*": ["node_modules/*"]
     }
   },
-  "include": ["src/**/*"]
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "types"]
 }

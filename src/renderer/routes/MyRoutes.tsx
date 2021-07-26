@@ -35,7 +35,7 @@ const MyRoutes: FC = () => {
   }, []);
 
   useEffect(() => {
-    if (localStorage.getItem("isAutoLaunch")) {
+    if (getLocalStorage("isAutoLaunch")) {
       const isOn = getLocalStorage("isAutoLaunch");
       sendMsgtoMain("auto-launch", isOn);
       setState((prv) => ({ ...prv, isAutoLaunch: isOn }));

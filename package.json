@@ -18,13 +18,8 @@
   },
   "license": "MIT",
   "config": {
-    "name": "@electron-forge/publisher-github",
-    "repository": {
-      "owner": "shadab",
-      "name": "Shadab"
-    },
-    "prerelease": true,
     "forge": {
+      "packagerConfig": {},
       "makers": [
         {
           "name": "@electron-forge/maker-squirrel",

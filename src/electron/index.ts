@@ -12,12 +12,12 @@ if (require("electron-squirrel-startup")) {
   app.quit();
 }
 
-// updateElectron({
-//   repo: "https://github.com/shadab19it/Os-Monitoring", // GitHub repo to check
-//   updateInterval: "6 minutes",
-//   logger: log,
-//   notifyUser: true,
-// });
+updateElectron({
+  repo: "https://github.com/shadab19it/Os-Monitoring", // GitHub repo to check
+  updateInterval: "6 minutes",
+  logger: log,
+  notifyUser: true,
+});
 
 // assigne some global varialbe
 let mainWindow: Electron.BrowserWindow | null;
@@ -40,7 +40,6 @@ const createWindow = () => {
   mainWindow = new BrowserWindow({
     height: 600,
     width: 800,
-    icon: "../assets/monitor.png",
     webPreferences: {
       nodeIntegration: true,
     },
